@@ -1,17 +1,19 @@
+# Компилятор
 CXX = g++
-CXXFLAGS = -Wall -std=c++11
 
-SRC = main.cpp FuncA.cpp
-OBJ = $(SRC:.cpp=.o)
-EXEC = my_program
+# Флаги компиляции
+CXXFLAGS = -Wall -g
 
-all: $(EXEC)
+# Имя исполняемого файла
+TARGET = my_program
 
-$(EXEC): $(OBJ)
-    $(CXX) $(OBJ) -o $(EXEC)
+# Исходные файлы
+SOURCES = main.cpp FuncA.cpp
 
-.cpp.o:
-    $(CXX) $(CXXFLAGS) -c $< -o $@
+# Правило сборки
+$(TARGET): $(SOURCES)
+    $(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCES)  
 
+# Очистка
 clean:
-    rm -f $(OBJ) $(EXEC)
+    rm -f $(TARGET)  
